@@ -1,9 +1,13 @@
 import numpy as np
 import random
 
-def fillArray():
+def fillArray(i):
+    if i%2==1:
+        i+=1
     number = random.randint(0, 1)
-    array = [number,number, number]
+    array = []
+    for i in range(0,i-1):
+        array.append(number)
     return array
 
 def signalDisruption(array):
@@ -15,8 +19,9 @@ def signalDisruption(array):
 def signalCompare(array0,array1):
     for f in array0:
         f+=array0
-    
-    if f>=2 :
+    num0=array0.len()
+    num1=array1.len()
+    if f>(num0/2) :
         first_signal=1 
     else :
         first_signal=0
@@ -24,7 +29,7 @@ def signalCompare(array0,array1):
     for c in array1:
         c += array1
 
-    if c >= 2:
+    if c > (num1/2):
         second_signal = 1
     else:
         second_signal = 0
