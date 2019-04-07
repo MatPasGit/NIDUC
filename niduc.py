@@ -1,15 +1,14 @@
-import numpy as np
+from numpy import *
 import random
 
 weighted_random = [1] * 60 + [0] * 40
-#ta funkcja okazała sie bez sensu ale ok XD
-def fillArray(i):
+def fillArray(i,elem):
     if i%2==1:
         i+=1
-    number = random.randint(0, 1)
+    #number = random.randint(0, 1)
     array = []
     for i in range(0,i-1):
-        array.append(number)
+        array.append(elem)
     return array
 
 def signalDisruption(array):
@@ -17,7 +16,7 @@ def signalDisruption(array):
     #prawdopodobienstwo zakłócenia zwiększa sie wraz  z długością tablicy 
     newarray=array
     #elementy tablicy iterowane dalej by zwiększyć lambde
-    n=array.length()
+    n=len(array)
     #prawd
     p=0.05
     for i in range(1,n):
@@ -58,3 +57,13 @@ def signalCompare(array0,array1):
         return False    
 
 
+def signalRead(array0):
+    for f in array0:
+        f+=array0
+    num0=array0.len()
+    
+    if f>(num0/2) :
+        first_signal=1 
+    else :
+        first_signal=0
+    return first_signal     
