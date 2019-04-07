@@ -1,6 +1,8 @@
 import numpy as np
 import random
 
+weighted_random = [1] * 60 + [0] * 40
+#ta funkcja okazała sie bez sensu ale ok XD
 def fillArray(i):
     if i%2==1:
         i+=1
@@ -23,11 +25,10 @@ def signalDisruption(array):
         l=p*i
         rand = np.random.poisson(l, i)
         if rand> 0.1 :
-            weighted_random = ['X'] * 60 + ['Y'] * 40 
-        if random.choice(weighted_random)== 'X':
-            newarray[i-1]=1
-        else:
-            newarray[i-1]=0
+            if random.choice(weighted_random)== 1:
+                newarray[i-1]=1
+            else:
+                newarray[i-1]=0
     
         #to jeszcze nie final version XD
     
