@@ -44,8 +44,8 @@ def signalDisruption(array):
 def signalCompare(array0,array1):
     for f in array0:
         f+=array0
-    num0=array0.len()
-    num1=array1.len()
+    num0=len(array0)
+    num1=len(array1)
     if f>(num0/2) :
         first_signal=1 
     else :
@@ -66,9 +66,10 @@ def signalCompare(array0,array1):
 
 
 def signalRead(array0):
+    sum=0
     for f in array0:
-        f+=array0
-    num0=array0.len()
+        sum+=int(f)
+    num0=len(array0)
     
     if f>(num0/2) :
         first_signal=1 

@@ -35,14 +35,14 @@ def main():
             disrupted=signalDisruption(array)
         
             errorfile.write(str(i))
-            errorfile.write(disrupted)
+            errorfile.write(str(disrupted))
        
-            number=signalRead(disrupted)
+            number = signalRead(str(disrupted))
             sendarray.append(str(number))
     
         savefile.write(str(count))
-        savefile.write(mainarray)
-        savefile.write(sendarray)
+        savefile.write(str(mainarray))
+        savefile.write(str(sendarray))
 
         check=signalCompare(mainarray,sendarray)    
 
