@@ -11,10 +11,27 @@ def fillArray(i):
     return array
 
 def signalDisruption(array):
+    #prawdopodobieństwo 0 -40%  prawdopodobieństwo 1 -60%
+    #prawdopodobienstwo zakłócenia zwiększa sie wraz  z długością tablicy 
     newarray=array
-    for f in array :
+    #elementy tablicy iterowane dalej by zwiększyć lambde
+    n=array.length()
+    #prawd
+    p=0.05
+    for i in range(1,n):
+    #l to lambda rozkładu poissona
+        l=p*i
+        rand = np.random.poisson(l, i)
+        if rand> 0.1 :
+            weighted_random = ['X'] * 60 + ['Y'] * 40 
+        if random.choice(weighted_random)== 'X':
+            newarray[i-1]=1
+        else:
+            newarray[i-1]=0
     
-        return newarray
+        #to jeszcze nie final version XD
+    
+    return newarray
 
 def signalCompare(array0,array1):
     for f in array0:
