@@ -34,13 +34,13 @@ def main():
             array=fillArray(length,bit)
             disrupted=signalDisruption(array)
         
-            errorfile.write(i)
+            errorfile.write(str(i))
             errorfile.write(disrupted)
        
             number=signalRead(disrupted)
-            sendarray.append(number)
+            sendarray.append(str(number))
     
-        savefile.write(count)
+        savefile.write(str(count))
         savefile.write(mainarray)
         savefile.write(sendarray)
 
