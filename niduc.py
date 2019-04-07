@@ -24,6 +24,7 @@ def signalDisruption(array):
     #l to lambda rozkładu poissona
         l=p*i
         rand = np.random.poisson(l, i)
+        #niżej wywala błąd
         if rand> 0.1 :
             if random.choice(weighted_random)== 1:
                 newarray[i-1]=1

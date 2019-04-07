@@ -55,11 +55,9 @@ def main():
     return 0
       
       
+main()
       
-      
-      
-      
-      
+
       
       #tutaj jest źle XDDD  
     #if len(array)%2==1:
@@ -74,11 +72,5 @@ def main():
     #comparison=signalCompare(array,disrupted)
     #if comparison==True
         #print("Message sent properly")
-    #else: print ("not")
-
-
-
-
-    
-
-main()
+    #else: print ("not"
+  
