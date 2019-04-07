@@ -1,4 +1,5 @@
-from numpy import *
+import numpy as np
+#from numpy import *
 import random
 
 weighted_random = [1] * 60 + [0] * 40
