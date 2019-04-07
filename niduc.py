@@ -33,17 +33,23 @@ def signalDisruption(array):
         #niżej wywala błąd
         if rand[i]> 0.1 :
             if random.choice(weighted_random)== 1:
-                newarray[i]=1
+                newarray[i]='1'
             else:
-                newarray[i]=0
+                newarray[i]='0'
     
         #to jeszcze nie final version XD
-    
+    for i in range(0,len(newarray)):
+        newarray[i] = int(newarray[i])
     return newarray
 
 def signalCompare(array0,array1):
+    full_sum = 0
+    full_sum_1 = 0
+
     for f in array0:
-        f+=array0
+        #f+=array0
+        full_sum += f
+
     num0=len(array0)
     num1=len(array1)
     if f>(num0/2) :
@@ -52,7 +58,7 @@ def signalCompare(array0,array1):
         first_signal=0
 
     for c in array1:
-        c += array1
+        full_sum_1 += c
 
     if c > (num1/2):
         second_signal = 1
@@ -68,7 +74,7 @@ def signalCompare(array0,array1):
 def signalRead(array0):
     sum=0
     for f in array0:
-        sum+=int(f)
+        sum += f
     num0=len(array0)
     
     if f>(num0/2) :

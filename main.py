@@ -26,19 +26,21 @@ def main():
         sendarray = []   
         
         for i in mode:
-            mainarray.append(i)
+            mainarray.append(int(i))
      #pętla ogarniająca przesył
-       
+        print(mainarray)
         for i in range(0,len(mainarray)-1) :
             bit=mainarray[i]
             array=fillArray(length,bit)
+            print(array)
             disrupted=signalDisruption(array)
-        
+            print(disrupted)
+
             errorfile.write(str(i))
             errorfile.write(str(disrupted))
        
-            number = signalRead(str(disrupted))
-            sendarray.append(str(number))
+            number = signalRead(disrupted)
+            sendarray.append(number)
     
         savefile.write(str(count))
         savefile.write(str(mainarray))
@@ -48,7 +50,7 @@ def main():
 
         print("send result:", check)  
         choice=input('Wanna stop? type yes:')
-        if choice=='y':
+        if choice=='yes':
             boolean=False
         else: boolean==True      
    
