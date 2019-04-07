@@ -6,8 +6,8 @@ from niduc import signalRead
 length=5
 def main():
 
-    savefile = open('dane.txt', 'w')
-    errorfile = open('error.txt','w')
+    savefile = open('dane_humming.txt', 'w')
+    errorfile = open('error_humming.txt','w')
     boolean=True
     count=0
     #appended=False
