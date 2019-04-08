@@ -94,7 +94,7 @@ def parity(parity, array):
         sum1 = 0
         for i in parity1:
             sum1 = +i
-        if sum1 % 2 == 0:
+        if+- sum1 % 2 == 0:
             parity11 = 0
         else: parity11 = 1
 
