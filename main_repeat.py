@@ -1,7 +1,7 @@
 from niduc import signalCompare
 from niduc import signalDisruption
 from niduc import fillArray
-from niduc import signalRead
+from niduc import signalReadrepeat
 
 length=5
 def main():
@@ -39,7 +39,7 @@ def main():
             errorfile.write(str(i))
             errorfile.write(str(disrupted))
        
-            number = signalRead(disrupted)
+            number = signalReadrepeat(disrupted)
             sendarray.append(number)
     
         savefile.write(str(count))
