@@ -24,8 +24,8 @@ def main():
                 print("Not a number")
             #fillarray
             #array=fillArray(12)
-            arr=list.str(mode) #zamienić inty na tablice str albo jakkolwiek zbadać ich ilosć
-            array_len=len(arr)
+            #arr=list.str(mode) #zamienić inty na tablice str albo jakkolwiek zbadać ich ilosć
+            array_len=len(mode)
             if array_len != 15:
                 print("15 BITS MAAAAN")
             else :
