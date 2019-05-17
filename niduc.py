@@ -43,39 +43,12 @@ def signalDisruption(array):
 
 #porównanie tablic 
 def signalCompare(array0,array1):
-    print(array0)
-    print(array1)
+    
     if array0==array1:
         return True
     else:
         return False
-    
-    full_sum = 0
-    full_sum_1 = 0
-
-    for f in array0:
-        #f+=array0
-        full_sum += f
-
-    num0=len(array0)
-    num1=len(array1)
-    if full_sum>(num0/2) :
-        first_signal=1 
-    else :
-        first_signal=0
-
-    for c in array1:
-        full_sum_1 += c
-
-    if full_sum_1 > (num1/2):
-        second_signal = 1
-    else:
-        second_signal = 0
-    
-    if first_signal == second_signal:
-        return True
-    else:
-        return False    
+        
 
 # odczytywanie bitu z powielenia po transmisji 
 def signalReadrepeat(array0):
@@ -84,7 +57,7 @@ def signalReadrepeat(array0):
         sum += f
     num0=len(array0)
     
-    if sum>(num0/2) :
+    if sum >(num0/2) :
         first_signal=1 
     else :
         first_signal=0
