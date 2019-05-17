@@ -4,11 +4,11 @@ import random
 
 weighted_random = [1] * 60 + [0] * 40
 def fillArray(i,elem):
-    if i%2==1:
+    if i%2==0:
         i+=1
     #number = random.randint(0, 1)
     array = []
-    for i in range(0,i-1):
+    for i in range(0,i):
         array.append(elem)
     return array
 
@@ -30,19 +30,26 @@ def signalDisruption(array):
         #rand = np.random.poisson(l, i)
  
         #print(rand)
-        #niżej wywala błąd
         if rand[i]> 0.1 :
             if random.choice(weighted_random)== 1:
                 newarray[i]='1'
             else:
                 newarray[i]='0'
     
-        #to jeszcze nie final version XD
+        #to juz final version XD
     for i in range(0,len(newarray)):
         newarray[i] = int(newarray[i])
     return newarray
 
+#porównanie tablic 
 def signalCompare(array0,array1):
+    print(array0)
+    print(array1)
+    if array0==array1:
+        return True
+    else:
+        return False
+    
     full_sum = 0
     full_sum_1 = 0
 
@@ -52,7 +59,7 @@ def signalCompare(array0,array1):
 
     num0=len(array0)
     num1=len(array1)
-    if f>(num0/2) :
+    if full_sum>(num0/2) :
         first_signal=1 
     else :
         first_signal=0
@@ -60,7 +67,7 @@ def signalCompare(array0,array1):
     for c in array1:
         full_sum_1 += c
 
-    if c > (num1/2):
+    if full_sum_1 > (num1/2):
         second_signal = 1
     else:
         second_signal = 0
@@ -70,14 +77,14 @@ def signalCompare(array0,array1):
     else:
         return False    
 
-
+# odczytywanie bitu z powielenia po transmisji 
 def signalReadrepeat(array0):
     sum=0
     for f in array0:
         sum += f
     num0=len(array0)
     
-    if f>(num0/2) :
+    if sum>(num0/2) :
         first_signal=1 
     else :
         first_signal=0
@@ -98,13 +105,9 @@ def parity(parity, array):
             parity11 = 0
         else: parity11 = 1
 
-    return parity11
-
-
-def signalReadhamming(array):
-    #15 bitów 
+    return parity11 
     
-
+def signalReadhamming(array):
     parity1=[2,4,6,8,10,12,14]
     parity11=parity(parity1,array)  
     parity2=[2,5,6,9,10,13,14]
@@ -115,16 +118,16 @@ def signalReadhamming(array):
     parity44 = parity(parity4,array)
 
     false_bit=-1
-    if array[0]!=parity11:
+    if array[0]==parity11:
         false_bit+=1
     
-    if array[1]!=parity22:
+    if array[1]==parity22:
         false_bit+=2    
     
-    if array[3] !=parity33:
+    if array[3] ==parity33:
         false_bit += 4
     
-    if array[7] != parity44:
+    if array[7] == parity44:
         false_bit += 8
     
     if false_bit == -1:

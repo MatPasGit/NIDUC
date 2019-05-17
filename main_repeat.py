@@ -29,7 +29,7 @@ def main():
             mainarray.append(int(i))
      #pętla ogarniająca przesył
         print(mainarray)
-        for i in range(0,len(mainarray)-1) :
+        for i in range(0,len(mainarray)) :
             bit=mainarray[i]
             array=fillArray(length,bit)
             print(array)
@@ -65,8 +65,7 @@ main()
     #if len(array)%2==1:
         #array.append(1)
         #appended=True
-    #else: appended=False    
-    
+    #else: appended=False
     #disrupted=signalDisruption(array)
     #if appended==True:
         #del array[len(array-1)]

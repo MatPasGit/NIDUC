@@ -1,3 +1,4 @@
+"""
 from niduc import signalCompare
 from niduc import signalDisruption
 from niduc import fillArray
@@ -16,7 +17,7 @@ def main():
         count+=1
         #użyszkodnik
         array_len=0
-        while(array_len != 15):
+        while(array_len != 15): 
             print("ENTER YOUR BINARY MESSAGE 15 BIT LONG")
             try:
                 mode=(input('Input:'))
@@ -46,7 +47,7 @@ def main():
             errorfile.write(str(disrupted))
        
             sendarray = signalReadhamming(disrupted)
-            
+            print(sendarray)
     
       
         savefile.write(str(mainarray))
@@ -66,3 +67,4 @@ def main():
 main()
       
 
+"""
