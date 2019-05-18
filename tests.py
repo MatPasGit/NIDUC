@@ -9,8 +9,9 @@ import random
 def tests():
     ones=0
     zeros=0
-    try:
-        lenght = (input('transmission lengh:'))
+   
+    try :
+        length = (input('transmission lengh:'))
     except ValueError:
         print("Not a number")
        
@@ -29,7 +30,21 @@ def tests():
             testarray.append(0)
     #tablica z indeksami (do wykresu)
     indexarray=[]
-    for i in range(1,howmuch):
+    for i in range(0,howmuch):
         indexarray[i]=i
 #tutaj zaczynamy testowanie 
 #pętla sprawdza sto razy ileś bitów
+    for m in range(0,99):
+        stoparray = []
+        for i in range(0,len(testarray)):
+            bit=testarray[i]
+            onebitarray = fillArray(length, bit)
+            onebitarray=signalDisruption(onebitarray)
+            newbit=signalReadrepeat(onebitarray)
+            stoparray.append(newbit)
+
+        for i in range(0,howmuch):
+
+
+
+
