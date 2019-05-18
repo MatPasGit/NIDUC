@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def tests():
     ones=0  #ilość przekłamać na jedynki
     zeros=0 #ilosć przekłamań na zera
-  
+    falsebits =0
     try :
         length = (input('Ile powieleń:'))
     except ValueError:
@@ -24,7 +24,8 @@ def tests():
         print("Not a number")
     
     howmuch=int(howmuch)
-    indexarray = []  # tablica indeksów do wykresu
+    indexarray = []  # lista indeksów do wykresu
+    subindexarray = []    #lista ilości przekłamań na bicie
     #tablica testowa wypełniona losowo 
     howmuch=int(howmuch)
     testarray=[]    
@@ -35,10 +36,13 @@ def tests():
         else:
             testarray.append(0)
     #tablica z indeksami (do wykresu)
-    for i in range(0,howmuch-1):
-        indexarray[i]=i
+    for i in range(0,howmuch):
+        indexarray.append(i)
 
-    subindexarray=indexarray    
+    for i in range(0, howmuch):
+        subindexarray.append(0)
+
+    print(subindexarray)
     #tutaj zaczynamy testowanie 
     #pętla sprawdza sto razy ileś bitów
     for m in range(0,99):
@@ -48,17 +52,28 @@ def tests():
             onebitarray = fillArray(length, bit)
             onebitarray=signalDisruption(onebitarray)
             newbit=signalReadrepeat(onebitarray)
-            stoparray.append(newbit)            #symulacja przesyłu i dopisanie do tablicy przesłanej
-
-        for i in range(0,howmuch):
-            if testarray[i] != stoparray[i]:
-                indexarray[i]+=1
+            stoparray.append(newbit)     #symulacja przesyłu i dopisanie do tablicy przesłanej
+        
+        
+        for i in range(0,howmuch-1):
+            if testarray[i] != stoparray[i]:  
+                falsebits+=1
+                subindexarray[i] = subindexarray[i]+1
                 if testarray[i] == 0 :
-                    ones+=1
-                else : zeros +=1        #porównanie tablic i analityka 
+                    ones=+1               #tutaj nie inkremetuje dobrze
+                else : zeros +=1        #porównanie tablic i analityka  
 
-    plt.plot(subindexarray, indexarray, 'ro')
-    plt.axis([0, howmuch, 0, howmuch])
+
+    print("faslebits")   
+    print(falsebits)
+    print("subindex")
+    print(subindexarray)
+    print(indexarray)  
+    print("ones and zeros")
+    print(ones)
+    print(zeros)         
+    plt.plot(indexarray, subindexarray)
+    plt.axis([0, howmuch, 0, howmuch/2])
     plt.show()
 
 
