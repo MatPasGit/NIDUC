@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def tests():
     ones=0  #ilość przekłamać na jedynki
     zeros=0 #ilosć przekłamań na zera
-    indexarray = [] #tablica indeksów do wykresu
+  
     try :
         length = (input('Ile powieleń:'))
     except ValueError:
@@ -24,7 +24,7 @@ def tests():
         print("Not a number")
     
     howmuch=int(howmuch)
-    indexarray = [howmuch]  # tablica indeksów do wykresu
+    indexarray = []  # tablica indeksów do wykresu
     #tablica testowa wypełniona losowo 
     howmuch=int(howmuch)
     testarray=[]    
