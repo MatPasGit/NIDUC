@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 
 
 def tests():
+    averagelist=[] #lista do liczenia średniej
+
     ones=0  #ilość przekłamać na jedynki
     zeros=0 #ilosć przekłamań na zera
     falsebits =0
@@ -23,9 +25,9 @@ def tests():
     except ValueError:
         print("Not a number")
     
-    howmuch=int(howmuch)
+    
     indexarray = []  # lista indeksów do wykresu
-    subindexarray = []    #lista ilości przekłamań na bicie
+    subindexarray = []    #lista ilo10ści przekłamań na bicie
     #tablica testowa wypełniona losowo 
     howmuch=int(howmuch)
     testarray=[]    
@@ -42,11 +44,12 @@ def tests():
     for i in range(0, howmuch):
         subindexarray.append(0)
 
-    print(subindexarray)
+    #print(subindexarray)
     #tutaj zaczynamy testowanie 
     #pętla sprawdza sto razy ileś bitów
     for m in range(0,99):
         stoparray = []
+        averagelist.append(0)
         for i in range(0,len(testarray)):
             bit=testarray[i]
             onebitarray = fillArray(length, bit)
@@ -56,24 +59,53 @@ def tests():
         
         
         for i in range(0,howmuch-1):
-            if testarray[i] != stoparray[i]:  
+            if testarray[i] != stoparray[i]: 
+                averagelist[m]+=1 
                 falsebits+=1
-                subindexarray[i] = subindexarray[i]+1
+                #subindexarray[i] +=1
                 if testarray[i] == 0 :
-                    ones=+1               #tutaj nie inkremetuje dobrze
+                    ones+=1              
                 else : zeros +=1        #porównanie tablic i analityka  
 
+    average=0
+    ind=0
+    avsum=0
+    for i in averagelist:
+        ind+=1
+        avsum+=i
+       
+    average=avsum/ind
+    odchyl=0 
+    for i in averagelist:
+        odchyl += (i-average)**2
+        odchyl /= len(averagelist)
+       #ilość błędów dla zestawu danych liczyć dla przesłania parenaście razy
+       
 
+        
+
+    plt.hist(averagelist, normed=True, bins=30)
     print("faslebits")   
     print(falsebits)
-    print("subindex")
-    print(subindexarray)
-    print(indexarray)  
+    #print("subindex")
+    #print(subindexarray)
+    #print(indexarray)  
     print("ones and zeros")
     print(ones)
     print(zeros)         
-    plt.plot(indexarray, subindexarray)
-    plt.axis([0, howmuch, 0, howmuch/2])
+    print("średnia ilości błedów na próbę")
+    print(average)
+    print ('Wariancja to: ', odchyl)
+    #plt.plot(indexarray, subindexarray)
+    #plt.axis([0, howmuch, 0, howmuch/2])
+
+    #TU PRÓBUJCIE WRZUCIĆ GAUSSA NA HISTOGRAM
+    def gauss(x, *p):
+        A, mu, sigma = p
+        return A*np.exp(-(x-mu)**2/(2.*sigma**2))
+
+
+
     plt.show()
 
 
