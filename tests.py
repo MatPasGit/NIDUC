@@ -5,7 +5,8 @@ from niduc import signalReadrepeat
 import random
 import numpy as np
 import matplotlib.pyplot as plt
-
+import matplotlib.mlab as mlab
+import scipy.stats
 
 def tests():
     averagelist=[] #lista do liczenia średniej
@@ -104,8 +105,19 @@ def tests():
         A, mu, sigma = p
         return A*np.exp(-(x-mu)**2/(2.*sigma**2))
 
+    result = plt.hist(averagelist)
+        
+    mean = np.mean(averagelist)
+    variance = np.var(averagelist)
+    sigma = np.sqrt(variance)
+    x = np.linspace(min(averagelist), max(averagelist), 100)
+    dx = result[1][1] - result[1][0]
+    scale = len(averagelist)*dx
+    plt.plot(x, scipy.stats.norm.pdf(x, mean, sigma)*scale)
 
-
+    plt.xlabel("Number of errors")
+    plt.ylabel("Incidence of errors")
+    
     plt.show()
 
 
