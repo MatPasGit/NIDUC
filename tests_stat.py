@@ -101,14 +101,14 @@ def make_stats():
     size_average = []
     size_odchyl = []
     
-    for x in range(60, 80):
+    for x in range(5, 70):
         actual_result = tests(x, 50)
         pack_average.append(actual_result[0])
         pack_odchyl.append(actual_result[1])
         tab_packets.append(x)
         
         
-    for y in range(50, 70):
+    for y in range(10, 80):
         actual_result = tests(60, x)
         size_average.append(actual_result[0])
         size_odchyl.append(actual_result[1])
@@ -122,20 +122,23 @@ def make_stats():
     print(size_odchyl)
 
     plt.subplot(211)
+    
     plt.title('Wykres sredniej ilosci błędów od ilości pakietów')
-    plt.errorbar(tab_packets,pack_average, yerr=pack_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=5, capthick=2)
+    plt.errorbar(tab_packets,pack_average, yerr=pack_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=3, capthick=1)
     plt.xlabel("Liczba pakietów")
     plt.ylabel("Srednia ilosć błędów")
-    
+    plt.xticks(range(5, x+1))
 
     plt.subplot(212)
     plt.title('Wykres sredniej ilosci błędów od wielkosci pakietów')
-    plt.errorbar(tab_size,size_average, yerr=size_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=5, capthick=2)
+    plt.errorbar(tab_size,size_average, yerr=size_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=3, capthick=1)
     plt.xlabel("Wielkosć pakietów")
     plt.ylabel("Srednia ilosć błędów")
 
     plt.subplots_adjust(top=0.92, bottom=0.18, left=0.10, right=0.95, hspace=0.65,
                     wspace=0.35)
+
+    plt.xticks(range(10, y+1))
     plt.show()
     
 make_stats()    
