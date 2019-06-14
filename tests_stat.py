@@ -11,6 +11,7 @@ import pylab
 pylab.style.use('seaborn-whitegrid')
 
 
+
 def tests(length, howmuch):
     
     averagelist=[] #lista do liczenia średniej
@@ -132,7 +133,7 @@ def make_stats():
     plt.subplot(212)
     plt.title('Wykres sredniej ilosci błędów od wielkosci pakietów')
     plt.errorbar(tab_size,size_average, yerr=size_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=3, capthick=1)
-    plt.scatter(tab_size,size_average)
+    #plt.scatter(tab_size,size_average)
     plt.xlabel("Wielkosć pakietów")
     plt.ylabel("Srednia ilosć błędów")
 
