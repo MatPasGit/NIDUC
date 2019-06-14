@@ -7,15 +7,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import scipy.stats
+import pylab
+pylab.style.use('seaborn-whitegrid')
 
 
-
-def tests():
+def tests(length, howmuch):
+    
     averagelist=[] #lista do liczenia średniej
 
     ones=0  #ilość przekłamać na jedynki
     zeros=0 #ilosć przekłamań na zera
     falsebits = 0
+
+    """
     try :
         length = (input('Ile powieleń:'))
     except ValueError:
@@ -27,7 +31,7 @@ def tests():
         howmuch = (input('Ile bitów :'))
     except ValueError:
         print("Not a number")
-    
+    """
     
     indexarray = []  # lista indeksów do wykresu
     subindexarray = []    #lista ilo10ści przekłamań na bicie
@@ -83,10 +87,59 @@ def tests():
         odchyl += (i-average)**2
         odchyl /= len(averagelist)
        #ilość błędów dla zestawu danych liczyć dla przesłania parenaście razy
-       
 
+    average = round(average, 4)
+    odchyl = round(odchyl, 6)
+    return average, odchyl
+
+def make_stats():
+    tab_packets = []
+    pack_average = []
+    pack_odchyl = []
+
+    tab_size = []
+    size_average = []
+    size_odchyl = []
+    
+    for x in range(60, 80):
+        actual_result = tests(x, 50)
+        pack_average.append(actual_result[0])
+        pack_odchyl.append(actual_result[1])
+        tab_packets.append(x)
         
+        
+    for y in range(50, 70):
+        actual_result = tests(60, x)
+        size_average.append(actual_result[0])
+        size_odchyl.append(actual_result[1])
+        tab_size.append(y)
+        
+    print(tab_packets)
+    print(pack_average)
+    print(pack_odchyl)
+    print(tab_size)
+    print(size_average)
+    print(size_odchyl)
 
+    plt.subplot(211)
+    plt.title('Wykres sredniej ilosci błędów od ilości pakietów')
+    plt.errorbar(tab_packets,pack_average, yerr=pack_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=5, capthick=2)
+    plt.xlabel("Liczba pakietów")
+    plt.ylabel("Srednia ilosć błędów")
+    
+
+    plt.subplot(212)
+    plt.title('Wykres sredniej ilosci błędów od wielkosci pakietów')
+    plt.errorbar(tab_size,size_average, yerr=size_odchyl, linestyle="solid", fmt='-', color='g', ecolor='xkcd:salmon', elinewidth=1.5, capsize=5, capthick=2)
+    plt.xlabel("Wielkosć pakietów")
+    plt.ylabel("Srednia ilosć błędów")
+
+    plt.subplots_adjust(top=0.92, bottom=0.18, left=0.10, right=0.95, hspace=0.65,
+                    wspace=0.35)
+    plt.show()
+    
+make_stats()    
+"""      
     plt.hist(averagelist, normed=True, bins=30)
     print("faslebits")   
     print(falsebits)
@@ -118,13 +171,13 @@ def tests():
     plt.xlabel("Number of errors")
     plt.ylabel("Incidence of errors")
     
-    plt.show()
+    #plt.show()
+
+"""
+    
 
 
-
-tests()
-
-
+    
 
 
 
