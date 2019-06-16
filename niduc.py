@@ -30,7 +30,7 @@ def signalDisruption(array):
         #rand = np.random.poisson(l, i)
  
         #print(rand)
-        if rand[i]> 0.1 :
+        if rand[i]> 0.05 :
             if random.choice(weighted_random)== 1:
                 newarray[i]='1'
             else:
